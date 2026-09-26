@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mateo P. Orpiana — Computer Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#05070f; --panel:#0a0e1f; --panel2:#0d1226;
+  --purple:#9b6bff; --purple-dim:#5a3fb8; --violet-glow:#c9b6ff;
+  --text:#e7e6f2; --muted:#8891ac; --line:rgba(155,107,255,.18);
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:inherit; margin:0; padding:0;}
+html{scroll-behavior:smooth; scroll-padding-top:env(safe-area-inset-top,0px);}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:'Inter',sans-serif; font-size:16px; line-height:1.6;
+  overflow-x:hidden;
+}
+h1,h2,h3,.brand,.role{font-family:'Space Grotesk',sans-serif;}
+#field{position:fixed; inset:0; width:100%; height:100%; z-index:0; background:radial-gradient(ellipse at 50% 20%, #0c1230 0%, #05070f 60%);}
+.wrap{position:relative; z-index:1; max-width:720px; margin:0 auto; padding:0 24px;}
+nav{position:sticky; top:0; z-index:5; backdrop-filter:blur(10px); background:rgba(5,7,15,.6); border-bottom:1px solid var(--line);}
+nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:720px;}
+.brand{font-weight:700; font-size:1.05rem; letter-spacing:.02em; text-shadow:0 0 18px rgba(155,107,255,.35);}
+nav ul{display:flex; gap:22px; list-style:none;}
+nav a{color:var(--muted); text-decoration:none; font-size:.92rem; transition:color .2s, text-shadow .2s;}
+nav a:hover, nav a:focus-visible{color:var(--violet-glow); text-shadow:0 0 12px rgba(201,182,255,.6);}
+
+.hero{min-height:92vh; display:flex; flex-direction:column; justify-content:center; padding:100px 0 60px;}
+.tag{color:var(--purple); font-size:.9rem; margin-bottom:14px;}
+.hero h1{font-size:clamp(2.2rem,6vw,3.6rem); font-weight:700; line-height:1.08; letter-spacing:-.01em; text-shadow:0 0 34px rgba(155,107,255,.28);}
+.role{color:var(--muted); font-size:1.2rem; margin-top:10px; font-weight:400;}
+.loc{color:var(--muted); font-size:.9rem; margin-top:6px;}
+.hero p.bio{max-width:52ch; margin-top:22px; color:#c7c9dc;}
+.hero .links{display:flex; gap:16px; margin-top:30px; flex-wrap:wrap;}
+.btn{display:inline-block; padding:10px 20px; border-radius:2px; border:1px solid var(--purple-dim); color:var(--violet-glow); text-decoration:none; font-size:.9rem; transition:border-color .2s, background .2s, box-shadow .2s;}
+.btn:hover, .btn:focus-visible{border-color:var(--purple); background:rgba(155,107,255,.08); box-shadow:0 0 22px rgba(155,107,255,.35);}
+.btn.primary{background:var(--purple); color:#05070f; border-color:var(--purple); font-weight:600; box-shadow:0 0 20px rgba(155,107,255,.3);}
+.btn.primary:hover{background:var(--violet-glow); box-shadow:0 0 30px rgba(201,182,255,.55);}
+
+.avatar{width:132px; height:132px; border-radius:50%; border:1px solid var(--line); background:linear-gradient(160deg,#161a34,#0a0e1f); display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:.72rem; text-align:center; margin-bottom:26px; overflow:hidden; box-shadow:0 0 40px rgba(155,107,255,.18);}
+/* Swap in your photo: <img src="your-photo.jpg" alt="Mateo P. Orpiana" style="width:100%;height:100%;object-fit:cover;"> inside .avatar */
+
+section{padding:70px 0; border-top:1px solid var(--line);}
+section h2{font-size:1.6rem; font-weight:700; margin-bottom:28px; position:relative; display:inline-block;}
+section h2::after{content:''; position:absolute; left:0; bottom:-10px; width:38px; height:2px; background:linear-gradient(90deg,var(--purple),transparent);}
+
+.card{background:var(--panel); border:1px solid var(--line); border-radius:2px; padding:22px 24px; margin-bottom:16px; transition:border-color .25s, box-shadow .25s;}
+.card:hover{border-color:var(--purple-dim); box-shadow:0 0 26px rgba(155,107,255,.12);}
+.card h3{font-size:1.05rem; font-weight:600;}
+.card .meta{color:var(--purple); font-size:.85rem; margin:4px 0 10px;}
+.card p{color:#c7c9dc; font-size:.95rem;}
+.card ul{margin-top:8px; padding-left:18px; color:#c7c9dc; font-size:.95rem;}
+
+.stack{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;}
+.chip{border:1px solid var(--line); color:var(--violet-glow); font-size:.8rem; padding:5px 12px; border-radius:2px; transition:box-shadow .2s, border-color .2s;}
+.chip:hover{border-color:var(--purple); box-shadow:0 0 14px rgba(155,107,255,.3);}
+
+.proj-links{margin-top:14px; display:flex; gap:14px;}
+.proj-links a{color:var(--purple); font-size:.88rem; text-decoration:none; border-bottom:1px solid transparent;}
+.proj-links a:hover, .proj-links a:focus-visible{border-color:var(--purple);}
+
+.skills-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:14px;}
+.skill{border:1px solid var(--line); background:var(--panel); padding:16px; text-align:center; border-radius:2px;}
+.skill .lvl{height:3px; background:var(--panel2); margin-top:10px; overflow:hidden;}
+.skill .lvl span{display:block; height:100%; background:linear-gradient(90deg,var(--purple-dim),var(--purple));}
+
+footer{padding:50px 0 80px; text-align:center;}
+footer .links{display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-bottom:18px;}
+footer a{color:var(--muted); text-decoration:none; font-size:.9rem;}
+footer a:hover, footer a:focus-visible{color:var(--violet-glow);}
+footer .fine{color:#565c78; font-size:.8rem;}
+a:focus-visible, button:focus-visible{outline:2px solid var(--violet-glow); outline-offset:3px;}
+@media (prefers-reduced-motion: reduce){ #field{display:none;} body{background:var(--bg);} }
+</style>
+</head>
+<body>
+<canvas id="field"></canvas>
+
+<nav><div class="wrap">
+  <span class="brand">M. Orpiana</span>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</div></nav>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="avatar"><img src="Profile.jpg" alt="Mateo P. Orpiana" style="width:100%;height:100%;object-fit:cover;"></div>
+    <p class="tag">// currently orbiting Albay, Philippines</p>
+    <h1>Mateo P. Orpiana</h1>
+    <p class="role">Computer Engineer</p>
+    <p class="loc">Albay, Philippines</p>
+    <p class="bio">A very chill engineer. I like building clean, practical software and figuring out how systems actually work under the hood — currently studying Computer Engineering at Bicol University Polangui.</p>
+    <div class="links">
+      <a class="btn primary" href="mailto:mattorpiana28@gmail.com">Email me</a>
+      <a class="btn" href="https://github.com/devmatt-hmm">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/mateo-orpiana-93630743a/">LinkedIn</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About</h2>
+    <p style="color:#c7c9dc; max-width:60ch;">I'm a Computer Engineering student who enjoys the quieter side of building things — reading through a problem carefully, writing code that's easy to come back to later, and shipping small tools that actually get used around campus. No rush, no drama, just steady progress.</p>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="card">
+      <h3>Student Developer</h3>
+      <p class="meta">Bicol University Polangui — Project Work</p>
+      <ul>
+        <li>Designed and built independent software projects as part of the BS Computer Engineering curriculum.</li>
+        <li>Focused on practical, campus-facing tools built end-to-end, from planning to deployment.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="card">
+      <h3>Campus Navigation System</h3>
+      <p>A navigation tool built to help students and visitors find their way around the Bicol University Polangui campus.</p>
+      <div class="stack"><span class="chip">Python</span></div>
+      <div class="proj-links">
+        <a href="https://github.com/devmatt-hmm/CAMPUS-NAVIGATION-SYSTEM">View on GitHub →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="card">
+      <h3>BS Computer Engineering</h3>
+      <p class="meta">Bicol University Polangui · 2025 – 2028</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill">C<div class="lvl"><span style="width:75%"></span></div></div>
+      <div class="skill">C++<div class="lvl"><span style="width:75%"></span></div></div>
+      <div class="skill">Python<div class="lvl"><span style="width:85%"></span></div></div>
+      <div class="skill">Java<div class="lvl"><span style="width:65%"></span></div></div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <h2 style="margin-bottom:20px;">Contact</h2>
+    <div class="links">
+      <a href="mailto:mattorpiana28@gmail.com">mattorpiana28@gmail.com</a>
+      <a href="https://github.com/devmatt-hmm">GitHub</a>
+      <a href="https://www.linkedin.com/in/mateo-orpiana-93630743a/">LinkedIn</a>
+      <a href="https://www.facebook.com/matt.360486">Facebook</a>
+    </div>
+    <p class="fine">Mateo P. Orpiana · Albay, Philippines</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  const canvas=document.getElementById('field');
+  const ctx=canvas.getContext('2d');
+  let w,h,stars=[];
+  const N=420;
+  const mouse={x:-9999,y:-9999,active:false};
+  const pulses=[];
+  let scrollY=window.scrollY||0;
+  addEventListener('scroll',()=>{scrollY=window.scrollY;},{passive:true});
+
+  function resize(){ w=canvas.width=innerWidth; h=canvas.height=innerHeight; }
+  resize(); addEventListener('resize',resize);
+
+  function mkStar(){
+    return {
+      x:Math.random()*w, y:Math.random()*h,
+      r:Math.random()*1.4+0.4,
+      baseA:Math.random()*0.6+0.3,
+      tw:Math.random()*Math.PI*2,
+      depth:0.15+Math.random()*0.55,
+      vx:0, vy:0
+    };
+  }
+  for(let i=0;i<N;i++) stars.push(mkStar());
+
+  addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;mouse.active=true;});
+  addEventListener('mouseleave',()=>{mouse.active=false;});
+  addEventListener('touchmove',e=>{if(e.touches[0]){mouse.x=e.touches[0].clientX;mouse.y=e.touches[0].clientY;mouse.active=true;}},{passive:true});
+  addEventListener('touchend',()=>{mouse.active=false;});
+
+  function spawnPulse(x,y){
+    pulses.push({x,y,r:HORIZON,life:1});
+  }
+  addEventListener('mousedown',e=>spawnPulse(e.clientX,e.clientY));
+  addEventListener('touchstart',e=>{if(e.touches[0])spawnPulse(e.touches[0].clientX,e.touches[0].clientY);},{passive:true});
+
+  const HORIZON=16, PULL_RADIUS=260;
+
+  function step(){
+    ctx.clearRect(0,0,w,h);
+
+    if(mouse.active){
+      const g=ctx.createRadialGradient(mouse.x,mouse.y,0,mouse.x,mouse.y,PULL_RADIUS);
+      g.addColorStop(0,'rgba(20,8,40,0.9)');
+      g.addColorStop(0.15,'rgba(60,20,90,0.35)');
+      g.addColorStop(1,'rgba(60,20,90,0)');
+      ctx.fillStyle=g;
+      ctx.fillRect(mouse.x-PULL_RADIUS,mouse.y-PULL_RADIUS,PULL_RADIUS*2,PULL_RADIUS*2);
+
+      ctx.beginPath();
+      ctx.arc(mouse.x,mouse.y,HORIZON,0,Math.PI*2);
+      ctx.fillStyle='#020103';
+      ctx.fill();
+      ctx.lineWidth=1.5;
+      ctx.strokeStyle='rgba(201,182,255,0.55)';
+      ctx.stroke();
+    }
+
+    for(let i=pulses.length-1;i>=0;i--){
+      const p=pulses[i];
+      p.r+=14; p.life-=0.02;
+      if(p.life<=0){ pulses.splice(i,1); continue; }
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.strokeStyle=`rgba(201,182,255,${p.life*0.5})`;
+      ctx.lineWidth=2;
+      ctx.stroke();
+    }
+
+    for(const s of stars){
+      s.tw+=0.03;
+      const dispY=((s.y-scrollY*s.depth)%h+h)%h;
+      let dx=0, dy=0, dist=9999, warp=0;
+
+      for(const p of pulses){
+        const pdx=s.x-p.x, pdy=dispY-p.y;
+        const pdist=Math.sqrt(pdx*pdx+pdy*pdy)||0.001;
+        const band=Math.abs(pdist-p.r);
+        if(band<60){
+          const f=(1-band/60)*p.life*1.6;
+          s.vx+=(pdx/pdist)*f;
+          s.vy+=(pdy/pdist)*f;
+        }
+      }
+
+      if(mouse.active){
+        dx=mouse.x-s.x; dy=mouse.y-dispY;
+        dist=Math.sqrt(dx*dx+dy*dy)||0.001;
+        if(dist<PULL_RADIUS){
+          const f=(1-dist/PULL_RADIUS);
+          const pull=f*f*2.2;
+          s.vx+=(dx/dist)*pull;
+          s.vy+=(dy/dist)*pull;
+          warp=f;
+        }
+      }
+      s.vx*=0.9; s.vy*=0.9;
+      const px=s.x, py=dispY;
+      s.x+=s.vx; s.y+=s.vy;
+      const newDispY=((s.y-scrollY*s.depth)%h+h)%h;
+
+      if(dist<HORIZON+2){
+        Object.assign(s,mkStar());
+        const edge=Math.floor(Math.random()*4);
+        if(edge===0){s.x=0;} else if(edge===1){s.x=w;} else if(edge===2){s.y=0;} else {s.y=h;}
+        continue;
+      }
+
+      const a=s.baseA*(0.6+0.4*Math.sin(s.tw))*(0.5+0.5*s.depth);
+      ctx.strokeStyle=`rgba(${200+55*warp|0},${190-60*warp|0},255,${a})`;
+      ctx.lineWidth=s.r*(1+warp*2.5);
+      ctx.beginPath();
+      ctx.moveTo(px,py);
+      ctx.lineTo(s.x,newDispY);
+      ctx.stroke();
+
+      if(warp<0.05){
+        ctx.beginPath();
+        ctx.arc(s.x,newDispY,s.r,0,Math.PI*2);
+        ctx.fillStyle=`rgba(230,225,255,${a})`;
+        ctx.fill();
+      }
+    }
+    requestAnimationFrame(step);
+  }
+  step();
+})();
+</script>
+</body>
+</html>
